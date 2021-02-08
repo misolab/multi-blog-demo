@@ -22,4 +22,7 @@ public class PostService {
 		return repository.findById(postId).orElseThrow(NullPointerException::new);
 	}
     
+	public void save(Post post) {
+		repository.save(post);
+	}
 }
