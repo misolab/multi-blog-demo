@@ -80,8 +80,8 @@ public class IndexController {
                         .subtitle("Problems look mighty small from 150 miles up")
                         .writter("misolab")
                         .updated("2021-02-08")
-                        .content("Wellcome!!<img class=\"img-fluid\" src=\"img/post-sample-image.jpg\">")
-                        .bgImage("img/post-bg.jpg")
+                        .content("Wellcome!!<img class=\"img-fluid\" src=\"images/post-bg.jpg\">")
+                        .bgImage("images/contact-bg.jpg")
                         .build();
 
         model.addAttribute("post", post);
