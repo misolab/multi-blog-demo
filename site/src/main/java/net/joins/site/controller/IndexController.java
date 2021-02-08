@@ -1,9 +1,12 @@
 package net.joins.site.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,10 +45,10 @@ public class IndexController {
     }
 
     @GetMapping
-    public String index(Model model) {
+    public String index(Model model, @PageableDefault(sort = "id", direction = Sort.Direction.DESC , value = 10) Pageable pageable) {
         log.info("index");
 
-        List<Post> list = service.getPostList();
+        Page<Post> list = service.getPostList(pageable);
 
         model.addAttribute("list", list);
         return "index";

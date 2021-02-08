@@ -92,8 +92,8 @@
         <!-- list item end -->
 
         <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+        <div class="clearfix" th:style="${list.last} ? 'display:none'">
+          <a class="btn btn-primary float-right" href="#" th:href="@{/(page=${list.number}+1)}">Older Posts &rarr;</a>
         </div>
       </div>
     </div>
