@@ -6,16 +6,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("/")
 public class IndexController {
 
-    @GetMapping
-    public String index(Model model, String msg) {
-        model.addAttribute("msg", msg);
-
+    @GetMapping("index.html")
+    public String index(Model model) {
+        log.info("index");
+        
         return "index";
     }
+
+    @GetMapping("post.html")
+    public String post(Model model) {
+        log.info("post");
+
+        return "post";
+    }
+
 }
