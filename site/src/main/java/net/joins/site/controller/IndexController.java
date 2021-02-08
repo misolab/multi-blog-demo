@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
@@ -40,7 +41,7 @@ public class IndexController {
         model.addAttribute("footer", footer);
     }
 
-    @GetMapping("index.html")
+    @GetMapping
     public String index(Model model) {
         log.info("index");
 
@@ -52,11 +53,11 @@ public class IndexController {
 
     
 
-    @GetMapping("post.html")
-    public String post(Model model) {
+    @GetMapping("{postId}")
+    public String post(Model model, @PathVariable Long postId) {
         log.info("post");
 
-        Post post = service.getPost(2L);
+        Post post = service.getPost(postId);
         
         model.addAttribute("post", post);
         return "post";

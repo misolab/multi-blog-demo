@@ -36,7 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
@@ -75,7 +75,7 @@
         <!-- list item start -->
         <th:block th:each="post : ${list}">
           <div class="post-preview">
-            <a href="post.html" th:href="${post.link}">
+            <a href="post.html" th:href="${post.id}">
               <h2 class="post-title" th:text="${post.title}">
                 Man must explore, and this is exploration at its greatest
               </h2>
