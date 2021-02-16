@@ -2,6 +2,7 @@ package net.joins.admin.controller;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -11,10 +12,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.joins.common.util.StringUtils;
@@ -52,7 +55,8 @@ public class PostApiController {
             throws IllegalStateException, IOException {
         log.info("file {}", file);
 
-        Path dest = Paths.get(imagePath, String.valueOf(System.currentTimeMillis()));
+        String fileName = String.format("%s.%s", String.valueOf(System.currentTimeMillis()), file.getOriginalFilename());
+        Path dest = Paths.get(imagePath, fileName);
         String backgroundImage = String.format("%s/%s", uriPath, dest.getFileName());
         file.transferTo(dest);        
 
@@ -69,7 +73,7 @@ public class PostApiController {
             post.setId(postDto.getId());
         }
         if (StringUtils.isNotEmpty(image)) {
-            post.setBackgroundImage(image);
+            post.setBgImage(image);
         }
         if (StringUtils.isEmpty(post.getWritter())) {
             post.setWritter(writter);
@@ -103,7 +107,7 @@ public class PostApiController {
             .subtitle(subtitle)
             .writter(writter)
             .content(content)
-            .backgroundImage(backgroundImage)
+            .bgImage(backgroundImage)
             .build();
         }
     }

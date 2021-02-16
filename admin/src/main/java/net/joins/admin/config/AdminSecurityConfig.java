@@ -33,7 +33,7 @@ public class AdminSecurityConfig extends WebSecurityConfig {
     @Override
     public void configure(WebSecurity web) throws Exception {
         super.configure(web);
-        web.ignoring().antMatchers("/manifest.json", "/img/**", "/**/*.woff", "/**/*.ttf", "/**/*.ico", "/**/*.css", "/**/*.js");
+        web.ignoring().antMatchers("/manifest.json", "/img/**", "/**/*.woff", "/**/*.ttf", "/**/*.ico", "/**/*.css", "/**/*.js", "/images/**");
     }
 
     @Override

@@ -69,7 +69,7 @@ export default {
         subtitle: '',
         writter: '',
         content: '',
-        backgroundImage: '',
+        bgImage: '',
       },
 
       file: null,
@@ -90,7 +90,7 @@ export default {
       if (this.file) {
         return URL.createObjectURL(this.file)
       }
-      return this.post.backgroundImage
+      return this.post.bgImage
     }
   },
   methods: {
@@ -114,7 +114,7 @@ export default {
     },
 
     removeBGImage() {
-      this.post.backgroundImage = ''
+      this.post.bgImage = ''
       this.file = null
     },
     addImage(file, fileList) {
